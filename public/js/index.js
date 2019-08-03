@@ -97,3 +97,35 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+function ipLookUp () {
+  var options = {
+      enableHighAccuracy: true,
+      timeout: 60000,
+      maximumAge: 0
+  };
+      
+  // If geolocation is accepted set map + nearby bathroom search to the user's location
+  function success(pos) {
+      lat = pos.coords.latitude;
+      long = pos.coords.longitude;
+      //function
+  }
+      
+  // On error, set coordinates to New York
+  function error(err) {
+      lat = 40.8;
+      long = -74;
+
+      // If user denies geolocation make address filter available on load
+      // Otherwise keep the filter hidden
+      if (err.message === 'User denied Geolocation') {
+          $('#filter').css('display','block')
+          $('#filter-show').html('Hide Map Filter')
+      }
+      //function()
+  }
+        
+  navigator.geolocation.getCurrentPosition(success, error, options);
+};
+ipLookUp()
