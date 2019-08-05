@@ -13,6 +13,7 @@ module.exports = function(app) {
 
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
+    // eslint-disable-next-line prettier/prettier
     db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
       res.render("example", {
         example: dbExample
