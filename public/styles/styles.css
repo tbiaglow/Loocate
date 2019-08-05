@@ -6,6 +6,16 @@ body {
   background-color: #95b9c7;
 }
 
+input.form-control {
+  width: 400px !important;
+}
+
+.form-control:focus {
+  outline: 0 !important;
+  border-color: initial;
+  box-shadow: none;
+}
+
 .row.no-pad {
   margin-right:0;
   margin-left:0;
