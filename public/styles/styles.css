@@ -16,6 +16,11 @@ input.form-control {
   box-shadow: none;
 }
 
+.navbar-brand {
+  font-family: 'Patua One', cursive;
+  font-size: 28px;
+}
+
 .card {
   border: none;
   border-radius: 0;
