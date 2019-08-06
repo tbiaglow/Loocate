@@ -28,4 +28,4 @@ function ipLookUp() {
   navigator.geolocation.getCurrentPosition(success, error, options);
 }
 
-module.exports = upLookUp();
+module.exports = ipLookUp();
