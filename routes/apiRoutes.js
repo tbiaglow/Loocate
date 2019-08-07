@@ -21,6 +21,27 @@ module.exports = function(app) {
     });
   });
 
+  // Alternative .post format that expands on req.body and makes a route name
+  app.post("/api/new", function(req, res) {
+
+
+    // Create a routeName
+
+    // Using a RegEx Pattern to remove spaces from example.name
+    // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+    var routeName = req.body.text.replace(/\s+/g, "").toLowerCase();
+
+    // Then add the example to the database using sequelize
+    db.Example.create({
+      routeName: routeName,
+      text: req.body.text,
+      description: req.body.description
+    }).then(function(dbExample) {
+      res.json(dbExample);
+      //res.status(204).end();
+  });
+
+
   // Delete an example by id
   app.delete("/api/examples/:id", function(req, res) {
     db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
