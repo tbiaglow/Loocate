@@ -1,3 +1,5 @@
+const reverse = require('reverse-geocode')
+
 function ipLookUp() {
   var options = {
     enableHighAccuracy: true,
@@ -26,5 +28,14 @@ function ipLookUp() {
     }
   }
   navigator.geolocation.getCurrentPosition(success, error, options);
+  address = reverse.lookup(userLocation.lat, userLocation.long, 'us');
+  //address = 
+  // { zipcode: '94129',
+  // state_abbr: 'CA',
+  // latitude: '37.799840',
+  // longitude: '-122.46167',
+  // city: 'San Francisco',
+  // state: 'California',
+  // distance: 1.6610566475026183 }
 }
 
