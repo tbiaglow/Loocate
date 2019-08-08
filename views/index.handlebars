@@ -33,6 +33,13 @@
   <script src="/js/index.js"></script> --}}
 
 <main role="main">
+  
+  <div class="jumbotron jumbotron-fluid pt-3 pb-0">
+    <div id='map'></div>
+    <script src='https://unpkg.com/es6-promise@4.2.4/dist/es6-promise.auto.min.js'></script>
+    <script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"></script>
+  </div>
+
   <div class="row no-pad">
     <div class="col-md-3">
       <aside>
@@ -88,7 +95,7 @@
       <!-- /.col-md-3 -->
     </div>
 
-    <!-- Google Map -->
+    {{!-- <!-- Google Map -->
     <div class="col-md-9">
       <div id="map" class="container map-responsive">
         <iframe
@@ -98,8 +105,8 @@
       <!-- /.col-md-9 -->
     </div>
     <!-- /.row -->
-  </div>
+  </div> --}}
 </main>
 
-<script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5MkIa2-9q6PLEVOnvbHnNKPYOu9TxjN8&callback=initMap"></script>
+{{!-- <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5MkIa2-9q6PLEVOnvbHnNKPYOu9TxjN8&callback=initMap"></script> --}}
