@@ -33,6 +33,10 @@ input.form-control {
   transform: rotate(90deg);
 }
 
+label {
+  font-size: 13px;
+}
+
 .row.no-pad {
   margin-right:0;
   margin-left:0;
