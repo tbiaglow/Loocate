@@ -23,6 +23,7 @@ if (process.env.JAWSDB_URL) {
     port: config.port,
     dialect: config.dialect
   });
+};
 
 if (process.env.JAWSDB_URL) {
   var sequelize = new Sequelize(process.env.JAWSDB_URL);
