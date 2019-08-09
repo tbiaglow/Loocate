@@ -62,7 +62,8 @@ module.exports = function(app) {
           res.json(updatedRes);
         }
       );
-
+    });
+  });
   // POST route for creating a new example
   app.post("/api/examples", function(req, res) {
     db.Example.create(req.body).then(function(dbExample) {
@@ -72,7 +73,6 @@ module.exports = function(app) {
 
   // Alternative .post format that expands on req.body and makes a route name
   app.post("/api/new", function(req, res) {
-
 
     // Create a routeName
 
@@ -88,6 +88,7 @@ module.exports = function(app) {
     }).then(function(dbExample) {
       res.json(dbExample);
       //res.status(204).end();
+    });
   });
 
 
@@ -100,21 +101,21 @@ module.exports = function(app) {
     });
   });
 
-
-// PUT route for updating examples. We can get the updated todo data from req.body
-app.put("/api/examples", function(req, res) {
-  // Update takes in an object describing the properties we want to update, and
-  // we use where to describe which objects we want to update
-  db.Example.update({
-    text: req.body.text,
-    description: req.body.description
-  }, {
-    where: {
-      id: req.body.id
+  // PUT route for updating examples. We can get the updated todo data from req.body
+  app.put("/api/examples", function(req, res) {
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.Example.update({
+      text: req.body.text,
+      description: req.body.description
+    },
+     {
+      where: {
+        id: req.body.id
+      }
     }
-  }).then(function(dbExample) {
-    res.json(dbExample);
+    ).then(function(dbExample) {
+      res.json(dbExample);
+    });
   });
-});
-
 };
