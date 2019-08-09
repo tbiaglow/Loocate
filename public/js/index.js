@@ -23,6 +23,13 @@ var API = {
     });
   },
 
+  // getComfortStationsByLocation: function() {
+  //   return $.ajax({
+  //     url: "/comfort_stations/",
+  //     type: "GET"
+  //   });
+  // },
+
   getComfortStationsByZip: function(zipCode) {
     return $.ajax({
       url: "api/comfort_stations/" + zipCode,
@@ -40,9 +47,11 @@ var API = {
 
 $("#mylocation").click(function(event) {
   event.preventDefault();
-  address = iplookup();
-  var zipCode = address.zipCode;
-  window.location.href = "/comfort_stations/" + zipCode;
+  var address = ipLookUp();
+  var lat = address.lat;
+  var lon = address.long;
+  console.log(lat, lon);
+  window.location.href = "/comfort_stations/geo/" + lat + "/" + lon;
   API.getComfortStationsByZip(zipCode).then(function(res) {
     console.log(res);
   });
@@ -126,3 +135,36 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+function ipLookUp() {
+
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 60000,
+    maximumAge: 0
+  };
+  // If geolocation is accepted set map + nearby bathroom search to the user's location
+  function success(pos) {
+    userLocation = {
+      lat: pos.coords.latitude,
+      long: pos.coords.longitude
+    };
+  }
+  // On error, set coordinates to New York
+  function error(err) {
+    userLocation = {
+      lat: 40.8,
+      long: -74
+    };
+
+    // If user denies geolocation make address filter available on load
+    // Otherwise keep the filter hidden
+    if (err.message === "User denied Geolocation") {
+      $("#filter").css("display", "block");
+      $("#filter-show").html("Hide Map Filter");
+    }
+  }
+  navigator.geolocation.getCurrentPosition(success, error, options);
+
+
+}
