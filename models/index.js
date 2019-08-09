@@ -7,6 +7,17 @@ var basename = path.basename(module.filename);
 var env = process.env.NODE_ENV || "development";
 var config = require(__dirname + "/../config/config.json")[env];
 var db = {};
+// require mysql
+var mysql = require("mysql");
+
+// mysql connection
+  db.connection = mysql.createConnection({
+    user: config.username,
+    password: config.password,
+    database: config.database,
+    port: config.port,
+    dialect: config.dialect
+  });
 
 //Sequelize (capital) references the standard library
 //sequelize (lowercase) references our connection to the DB
@@ -40,5 +51,7 @@ Object.keys(db).forEach(function(modelName) {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+
 
 module.exports = db;
