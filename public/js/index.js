@@ -43,6 +43,7 @@ $("#zipSearchBtn").click(function(event) {
   event.preventDefault();
   var zipCode = $("#zipInput").val();
   console.log(zipCode);
+  window.location.href = "/comfort_stations/" + zipCode;
   API.getComfortStationsByZip(zipCode).then(function(res) {
     console.log(res);
   });
