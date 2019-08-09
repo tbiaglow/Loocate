@@ -5,12 +5,17 @@ var path = require("path");
 var Sequelize = require("sequelize");
 var basename = path.basename(module.filename);
 var env = process.env.NODE_ENV || "development";
-var config = require(__dirname + "/../config/config.json")[env];
+var config = require(__dirname + "/../config/config.js")[env];
 var db = {};
 // require mysql
 var mysql = require("mysql");
 
+
+
 // mysql connection
+if (process.env.JAWSDB_URL) {
+  db.connection = mysql.createConnection(process.env.JAWSDB_URL)
+} else {
   db.connection = mysql.createConnection({
     user: config.username,
     password: config.password,
@@ -18,11 +23,10 @@ var mysql = require("mysql");
     port: config.port,
     dialect: config.dialect
   });
+};
 
-//Sequelize (capital) references the standard library
-//sequelize (lowercase) references our connection to the DB
-if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
+if (process.env.JAWSDB_URL) {
+  var sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
   var sequelize = new Sequelize(
     config.database,
