@@ -38,6 +38,16 @@ var API = {
   }
 };
 
+$("#mylocation").click(function(event) {
+  event.preventDefault();
+  address = iplookup();
+  var zipCode = address.zipCode;
+  window.location.href = "/comfort_stations/" + zipCode;
+  API.getComfortStationsByZip(zipCode).then(function(res) {
+    console.log(res);
+  });
+});
+
 // click handler for getting data based on zipcode entered by use
 $("#search").click(function(event) {
   event.preventDefault();
