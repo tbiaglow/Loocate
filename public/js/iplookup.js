@@ -37,6 +37,10 @@ function ipLookUp() {
   // city: 'San Francisco',
   // state: 'California',
   // distance: 1.6610566475026183 }
-}
+  address.lat = userLocation.lat;
+  address.long = userLocation.long;
+  return address;
+
+};
 
 

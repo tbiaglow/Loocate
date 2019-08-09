@@ -17,19 +17,36 @@
         padding: 0;
       }
     </style>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="./public/js/index.js"></script>
+    <script src="./public/js/iplookup.js"></script>
   </head>
   <body>
-    <div id="map"></div>
-    <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
-      }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5MkIa2-9q6PLEVOnvbHnNKPYOu9TxjN8&callback=initMap"
-    async defer></script>
+    <div id="map">
+      <script src='https://unpkg.com/es6-promise@4.2.4/dist/es6-promise.auto.min.js'></script>
+      <script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"></script>
+      <script>
+        var map;
+        address = iplookup();
+        // function initMap() {
+        //   map = new google.maps.Map(document.getElementById('map'), {
+        //     center: {lat: -34.397, lng: 150.644},
+        //     zoom: 8
+        //   });
+        // }
+        mapboxgl.accessToken = 'pk.eyJ1IjoicnlhbmNicm93biIsImEiOiJjandvZTJ2eGcwZGw3NGFueWVpdGZoeXMyIn0.bY5FsEL2jeX1XzOIAPT8NQ';
+                var map = new mapboxgl.Map({
+                container: 'map', // container id
+                style: 'mapbox://styles/mapbox/streets-v11', 
+                center: [address.long, address.lat], 
+                zoom: 8 
+            });
+            map.scrollZoom.disable();
+      </script>
+    </div>
+    
+    
   </body>
+
 </html>
