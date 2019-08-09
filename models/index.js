@@ -10,7 +10,12 @@ var db = {};
 // require mysql
 var mysql = require("mysql");
 
+
+
 // mysql connection
+if (process.env.JAWSDB_URL) {
+  db.connection = mysql.createConnection(process.env.JAWSDB_URL)
+} else {
   db.connection = mysql.createConnection({
     user: config.username,
     password: config.password,
@@ -19,8 +24,8 @@ var mysql = require("mysql");
     dialect: config.dialect
   });
 
-if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
+if (process.env.JAWSDB_URL) {
+  var sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
   var sequelize = new Sequelize(
     config.database,
