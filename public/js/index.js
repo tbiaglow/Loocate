@@ -39,7 +39,7 @@ var API = {
 };
 
 // click handler for getting data based on zipcode entered by use
-$("#zipSearchBtn").click(function(event) {
+$("#search").click(function(event) {
   event.preventDefault();
   var zipCode = $("#zipInput").val();
   console.log(zipCode);
