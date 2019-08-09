@@ -16,12 +16,20 @@ var API = {
       data: JSON.stringify(example)
     });
   },
-  getExamples: function() {
+  getComfortStations: function() {
     return $.ajax({
-      url: "api/examples",
+      url: "api/comfort_stations",
       type: "GET"
     });
   },
+
+  getComfortStationsByZip: function(zipCode) {
+    return $.ajax({
+      url: "api/comfort_stations/" + zipCode,
+      type: "GET"
+    });
+  },
+
   deleteExample: function(id) {
     return $.ajax({
       url: "api/examples/" + id,
@@ -29,6 +37,16 @@ var API = {
     });
   }
 };
+
+// click handler for getting data based on zipcode entered by use
+$("#zipSearchBtn").click(function(event) {
+  event.preventDefault();
+  var zipCode = $("#zipInput").val();
+  console.log(zipCode);
+  API.getComfortStationsByZip(zipCode).then(function(res) {
+    console.log(res);
+  });
+});
 
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function() {

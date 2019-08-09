@@ -29,7 +29,8 @@ module.exports = function(app) {
       // loop through responses, query database to get inspections for each comfort station in the response
       updatedRes = [];
       // query URL
-      var query = "SELECT id, MW, OvCond, Insp_Year, Insp_Date, ZipCode ";
+      var query =
+        "SELECT id, isClosed, MW, OvCond, Cleanliness, Visitor_Count, ChangingTablesAm, Safety_Condition, UrinalsAm, Insp_Year, Insp_Date, ZipCode ";
       query +=
         "FROM comfort_inspections RIGHT JOIN all_inspections ON (comfort_inspections.InspectionID = all_inspections.InspectionID) ";
       query +=
