@@ -19,8 +19,8 @@ var mysql = require("mysql");
 
 
 // mysql connection
-if (process.env.JAWSDB_URL) {
-  db.connection = mysql.createConnection(process.env.JAWSDB_URL)
+if (process.env.JAWSDB_NAVY_URL) {
+  db.connection = mysql.createConnection(process.env.JAWSDB_NAVY_URL)
 } else {
   db.connection = mysql.createConnection({
     user: config.username,
@@ -31,8 +31,8 @@ if (process.env.JAWSDB_URL) {
   });
 };
 
-if (process.env.JAWSDB_URL) {
-  var sequelize = new Sequelize(process.env.JAWSDB_URL);
+if (process.env.JAWSDB_NAVY_URL) {
+  var sequelize = new Sequelize(process.env.JAWSDB_NAVY_URL);
 } else {
   var sequelize = new Sequelize(
     config.database,
