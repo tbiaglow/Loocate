@@ -1,13 +1,5 @@
-/* .list-group-item {
-  line-height: 2.5;
-} */
-
 body {
-  background-color: #95b9c7;
-}
-
-input.form-control {
-  width: 400px !important;
+  background-color: #ffffff;
 }
 
 .form-control:focus {
@@ -16,9 +8,13 @@ input.form-control {
   box-shadow: none;
 }
 
-.navbar-brand {
+h1 {
   font-family: 'Patua One', cursive;
-  font-size: 28px;
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 24px;
 }
 
 .card {
@@ -26,36 +22,21 @@ input.form-control {
   border-radius: 0;
 }
 
-.card-header .fa {
-  transition: .3s transform ease-in-out;
-}
-.card-header .collapsed .fa {
-  transform: rotate(90deg);
-}
-
 label {
   font-size: 13px;
 }
 
 .row.no-pad {
-  margin-right:0;
-  margin-left:0;
-}
-.row.no-pad > [class*='col-'] {
-  padding-right:0;
-  padding-left:0;
+  margin-right: 0;
+  margin-left: 0;
 }
 
-.map-responsive{
-  overflow:hidden;
-  padding-bottom:56.25%;
-  position:relative;
-  height:0;
+.row.no-pad>[class*='col-'] {
+  padding-right: 0;
+  padding-left: 0;
 }
-.map-responsive iframe{
-  left:0;
-  top:0;
-  height:100%;
-  width:100%;
-  position:absolute;
+
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
 }
