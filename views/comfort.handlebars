@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      {{#each comfortStation}}
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title">Comfort Stations</h5>
+
+          <p>
+            <strong>Name</strong>: {{this.Prop_Name}}</p>
+          <p>
+          <p>
+            <strong>Location</strong>: {{this.GIS_Site_Location}}</p>
+          <p>
+            <strong>Zip Code</strong>: {{this.ZipCode}}</p>
+            <ul class="d-inline-block" style="padding-left: 0">
+              <li class="d-inline-block tiny">
+                <img src = "/assets/toilet_icon.jpg" style="height: 2em">
+                Toilet(s): {{this.inspections.0.ToiletsAm}}    </li>
+              <li class="d-inline-block tiny">
+                <img src = "/assets/urinal_icon3_adj.png" style="height: 2em">
+                Urinal(s): {{this.inspections.0.UrinalsAm}}    </li>
+              <li class="d-inline-block tiny">
+                <img src = "/assets/baseline-child_friendly-24px.svg" style="height: 2em">
+                Changing tables: {{this.inspections.0.ChangingTablesAm}}</li>
+            </ul>
+          <div class="inspectionContainer">
+          {{#each this.inspections}}
+            <ul class="inspList">
+              <strong>{{this.Insp_Date}}:</strong>
+              <li class="d-inline-block inspList">Men/Women: {{this.MW}} | </li>
+              <li class="d-inline-block inspList">Overall: {{this.OvCond}} | </li>
+              <li class="d-inline-block inspList">Cleanliness: {{this.Cleanliness}} | </li>
+              <li class="d-inline-block inspList">Safety: {{this.Safety_Confition}} | </li>
+              <li class="d-inline-block inspList">Visitors: {{this.Visitor_Count}}</li>
+            </ul>
+            {{/each}}
+            </div>
+          <a href="/">← Back To Home</a>
+        </div>
+      </div>
+    {{/each}}
+    </div>
+  </div>
+</div>
