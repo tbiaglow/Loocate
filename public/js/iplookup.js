@@ -29,6 +29,9 @@ function ipLookUp() {
   }
   navigator.geolocation.getCurrentPosition(success, error, options);
   address = reverse.lookup(userLocation.lat, userLocation.long, 'us');
+  address.latitude = userLocation.lat;
+  address.longitude = userLocation.long;
+  return address;
   //address = 
   // { zipcode: '94129',
   // state_abbr: 'CA',
