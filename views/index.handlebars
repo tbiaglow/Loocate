@@ -38,40 +38,68 @@
       <aside>
         <div class="card">
           <div class="card-body">
-            <p class="card-text">Search for a location, or use the filters below. Don't see a familiar location? Add it to our database!&nbsp;<span role="img" aria-label="Pile of poo">💩💩💩</span></p>
+            <p class="card-text">Search for an NYC Parks bathroom by ZIP code, and refine your search using the filters below.&nbsp;<span role="img" aria-label="Pile of poo">💩💩💩</span></p>
           </div>
-          <h5 class="card-header">Filter</h5>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">123 E 47th St, New York, NY 10017</li>
-            <li class="list-group-item">Reviews</li>
-            <li class="list-group-item">Distance</li>
-            <li class="list-group-item">Wait Time</li>
-          </ul>
-          <h5 class="card-header">
-            <a class="collapsed d-block" data-toggle="collapse" href="#collapse-collapsed" aria-expanded="true"
-              aria-controls="collapse-collapsed" id="heading-collapsed">
-              <i class="fa fa-chevron-down pull-right"></i>
-              Add Location
-            </a>
-          </h5>
-          <div id="collapse-collapsed" class="collapse" aria-labelledby="heading-collapsed">
-            <div class="card-body">
-              <p class="card-text">Some text.</p>
+          <h5 class="card-header">Filters</h5>
+          <div class="container form-group mt-2 row">
+            <div class="col-sm-6">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck1">
+                <label class="form-check-label" for="gridCheck1">
+                  <i class="fas fa-asterisk"></i>&nbsp;Safe
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck1">
+                <label class="form-check-label" for="gridCheck1">
+                  <i class="far fa-smile"></i>&nbsp;Clean
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck1">
+                <label class="form-check-label" for="gridCheck1">
+                  <i class="fas fa-user-clock"></i>&nbsp;No wait
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck1">
+                <label class="form-check-label" for="gridCheck1">
+                  <i class="fas fa-toilet"></i>&nbsp;Multi-Stall
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck1">
+                <label class="form-check-label" for="gridCheck1">
+                  <i class="fas fa-baby"></i>&nbsp;Changing Table
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck1">
+                <label class="form-check-label" for="gridCheck1">
+                  <i class="fas fa-restroom"></i>&nbsp;Gender Neutral
+                </label>
+              </div>
             </div>
           </div>
         </div>
       </aside>
       <!-- /.col-md-3 -->
     </div>
+
+    <!-- Google Map -->
     <div class="col-md-9">
-      <div class="container map-responsive">
+      <div id="map" class="container map-responsive">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.2798921175!2d-74.259868471812!3d40.69767006750601!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY!5e0!3m2!1sen!2sus!4v1564848836068!5m2!1sen!2sus"
           width="600" height="450" frameborder="0" style="border:0"></iframe>
-        <!-- /.container -->
       </div>
       <!-- /.col-md-9 -->
     </div>
     <!-- /.row -->
   </div>
 </main>
+
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5MkIa2-9q6PLEVOnvbHnNKPYOu9TxjN8&callback=initMap"></script>
