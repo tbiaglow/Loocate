@@ -6,14 +6,14 @@ var $exampleList = $("#example-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function(example) {
+  addInspection: function(userInspection) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
+      url: "../api/inspection",
+      data: JSON.stringify(userInspection)
     });
   },
   getComfortStations: function() {
@@ -116,3 +116,26 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+// Add event listener to rate-btn
+
+$(".rate-btn").on("click", function(event) {
+  event.preventDefault();
+  var propID = $(this).attr("data");
+  console.log(propID);
+  window.location.href = "/inspection/" + propID;
+});
+
+$("#inspect-submit").on("click", function(event) {
+  event.preventDefault();
+  var userInspection = {
+    cleanliness: $("#cleanliness-input").val().trim(),
+    safety: $("#safety-input").val().trim(),
+    visitorCount: $("#visitorcount-input").val().trim(),
+    waitTime: $("#waittime-input").val().trim(),
+    comments: $("#comments-input").val().trim(),
+    propID: $("#inspection-form").attr("data")
+  };
+  console.log(userInspection);
+  API.addInspection(userInspection);
+});
