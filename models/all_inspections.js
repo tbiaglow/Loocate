@@ -2,10 +2,12 @@ module.exports = function(sequelize, DataTypes) {
   var All_Inspections = sequelize.define("All_Inspections", {
     Prop_ID: DataTypes.STRING,
     // AMPSDistrict: DataTypes.INTEGER,
-    InspectionID: {
+    id: {
       type: DataTypes.INTEGER,
-      primaryKey: true
+      primaryKey: true,
+      autoIncrement: true
     },
+    autoIncrement: DataTypes.INTEGER,
     // Season: DataTypes.STRING,
     // Insp_Round: DataTypes.INTEGER,
     Insp_Date: DataTypes.DATE,
@@ -16,11 +18,11 @@ module.exports = function(sequelize, DataTypes) {
     // Inspector2: DataTypes.INTEGER,
     OverallCondition: DataTypes.STRING,
     Cleanliness: DataTypes.STRING,
-    Safety_Condition: DataTypes.STRING,
+    // Safety_Condition: DataTypes.STRING,
     // Structural_Condition: DataTypes.STRING,
     Visitor_Count: DataTypes.INTEGER,
-    Closed: DataTypes.STRING,
-    Comments: DataTypes.TEXT,
+    // Closed: DataTypes.STRING,
+    Comments: DataTypes.TEXT
     // Inspection_Type: DataTypes.STRING,
     // InspAddedDate: DataTypes.DATE
   }, {

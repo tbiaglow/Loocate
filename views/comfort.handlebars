@@ -4,11 +4,11 @@
       {{#each comfortStation}}
       <div class="card mt-4">
         <div class="card-body">
-          <h5 class="card-title">Comfort Stations</h5>
+          <h5 class="card-title">{{this.Prop_Name}}</h5>
 
-          <p>
+          {{!-- <p>
             <strong>Name</strong>: {{this.Prop_Name}}</p>
-          <p>
+          <p> --}}
           <p>
             <strong>Location</strong>: {{this.GIS_Site_Location}}</p>
           <p>
@@ -16,13 +16,16 @@
             <ul class="d-inline-block" style="padding-left: 0">
               <li class="d-inline-block tiny">
                 <img src = "/assets/toilet_icon.jpg" style="height: 2em">
-                Toilet(s): {{this.inspections.0.ToiletsAm}}    </li>
+                Toilet(s): {{this.facilities.0.urinalsMax}}    </li>
               <li class="d-inline-block tiny">
                 <img src = "/assets/urinal_icon3_adj.png" style="height: 2em">
-                Urinal(s): {{this.inspections.0.UrinalsAm}}    </li>
+                Urinal(s): {{this.facilities.0.toiletsMax}}    </li>
               <li class="d-inline-block tiny">
                 <img src = "/assets/baseline-child_friendly-24px.svg" style="height: 2em">
-                Changing tables: {{this.inspections.0.ChangingTablesAm}}</li>
+                Changing tables: {{this.facilities.0.changingTablesMax}}</li>
+              <li class="d-inline-block tiny">
+                <img src = "/assets/baseline-feedback-24px.svg" style="height: 2em">
+                <button type="button" class="btn-link rate-btn" data={{this.Prop_ID}}>Rate this station</button></li>
             </ul>
           <div class="inspectionContainer">
           {{#each this.inspections}}
@@ -35,8 +38,8 @@
               <li class="d-inline-block inspList">Visitors: {{this.Visitor_Count}}</li>
             </ul>
             {{/each}}
-            </div>
-          <a href="/">← Back To Home</a>
+          </div>
+          <a href="/">← Back To Home</a></li>
         </div>
       </div>
     {{/each}}
