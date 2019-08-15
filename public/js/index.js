@@ -168,10 +168,17 @@ function ipLookUp() {
   };
   // If geolocation is accepted set map + nearby bathroom search to the user's location
   function success(pos) {
-    userLocation = {
-      lat: pos.coords.latitude,
-      long: pos.coords.longitude
-    };
+    // userLocation = {
+    //   lat: pos.coords.latitude,
+    //   long: pos.coords.longitude
+    // };
+    var lat = pos.coords.latitude;
+    var lon = pos.coords.longitude;
+    console.log(lat, lon);
+    window.location.href = "/comfort_stations/geo/" + lat + "/" + lon;
+    // API.getComfortStationsByZip(zipCode).then(function(res) {
+    //   console.log(res);
+    // });
   }
   // On error, set coordinates to New York
   function error(err) {
@@ -188,5 +195,4 @@ function ipLookUp() {
     }
   }
   navigator.geolocation.getCurrentPosition(success, error, options);
-
 }
