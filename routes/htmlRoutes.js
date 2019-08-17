@@ -117,9 +117,9 @@ module.exports = function(app) {
   // Comfort Stations by geolocation
   app.get("/comfort_stations/geo/:lat/:lon", function(req, res) {
     // reverseGeo to change from lat/lon to zip
-    var lat = req.params.lat;
-    var long = req.params.lon;
-    var address = reverseGeocode(lat, long);
+    // var lat = req.params.lat;
+    // var long = req.params.lon;
+    var address = reverseGeocode(req.params.lat, req.params.lon);
 
     async.waterfall(
       [
@@ -207,10 +207,10 @@ module.exports = function(app) {
 };
 
 function reverseGeocode(lat, long) {
-  var address = reverseGeo.lookup(lat, long, 'us');
-  address.latitude = lat;
-  address.longitude = long;
-  return address;
+  var fullAddress = reverseGeo.lookup(lat, long, 'us');
+  // address.latitude = lat;
+  // address.longitude = long;
+  return fullAddress;
   //address = 
   // { zipcode: '94129',
   // state_abbr: 'CA',
