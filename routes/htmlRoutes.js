@@ -119,12 +119,12 @@ module.exports = function(app) {
     // reverseGeo to change from lat/lon to zip
     // var lat = req.params.lat;
     // var long = req.params.lon;
-    var address = reverseGeocode(req.params.lat, req.params.lon);
+    // var address = reverseGeocode(req.params.lat, req.params.lon);
 
     async.waterfall(
       [
         function(callback) {
-          var zipcodeRad = zipcodes.radius(address.zipcode, 0.5);
+          var zipcodeRad = zipcodes.radius(reverseGeocode(req.params.lat, req.params.lon).zipcode, 0.5);
           var query =
             "SELECT Prop_Name, all_sites.Prop_ID, CS_ID, ZipCode, GIS_Site_Location ";
           query +=
