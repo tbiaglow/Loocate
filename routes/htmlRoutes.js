@@ -132,7 +132,7 @@ module.exports = function(app) {
           query += "WHERE (ZipCode = ? )";
           db.connection.query(query, zipcodeRad, function(err, response) {
             // response will be comfort station objects, containining location and ID
-            console.log(response)
+            console.log(response);
             callback(null, response);
           });
         },
@@ -207,7 +207,7 @@ module.exports = function(app) {
 };
 
 function reverseGeocode(lat, long) {
-  address = reverseGeo.lookup(lat, long, 'us');
+  var address = reverseGeo.lookup(lat, long, 'us');
   address.latitude = lat;
   address.longitude = long;
   return address;
