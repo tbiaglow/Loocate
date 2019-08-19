@@ -119,18 +119,23 @@ module.exports = function(app) {
     // reverseGeo to change from lat/lon to zip
     // var lat = req.params.lat;
     // var long = req.params.lon;
-    // var address = reverseGeocode(req.params.lat, req.params.lon);
-
     async.waterfall(
       [
         function(callback) {
-          var zipcodeRad = zipcodes.radius(reverseGeocode(req.params.lat, req.params.lon).zipcode, 0.5);
+          var address = reverseGeocode(req.params.lat, req.params.lon);
+          console.log(address.zipcode);
+          callback(null, address);
+        },
+        function(address, callback) {
+          var zipcodeRad = zipcodes.radius(address.zipcode, 1);
+          var nearbyZips = "'" + zipcodeRad.join("','") + "'";
+          console.log(nearbyZips);
           var query =
             "SELECT Prop_Name, all_sites.Prop_ID, CS_ID, ZipCode, GIS_Site_Location ";
           query +=
             "FROM comfort_stations INNER JOIN all_sites ON (comfort_stations.Prop_ID = all_sites.Prop_ID) ";
-          query += "WHERE (ZipCode = ? )";
-          db.connection.query(query, zipcodeRad, function(err, response) {
+          query += "WHERE ?? in (" + nearbyZips + ")";
+          db.connection.query(query, ["ZipCode"], function(err, response) {
             // response will be comfort station objects, containining location and ID
             console.log(response);
             callback(null, response);
@@ -210,6 +215,7 @@ function reverseGeocode(lat, long) {
   var fullAddress = reverseGeo.lookup(lat, long, 'us');
   // address.latitude = lat;
   // address.longitude = long;
+  console.log("full address: " + JSON.stringify(fullAddress));
   return fullAddress;
   //address = 
   // { zipcode: '94129',
@@ -220,3 +226,4 @@ function reverseGeocode(lat, long) {
   // state: 'California',
   // distance: 1.6610566475026183 }
 }
+// "https://www.nycgovparks.org/parks/" + Prop_ID + "/map"

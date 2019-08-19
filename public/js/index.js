@@ -23,12 +23,13 @@ var API = {
     });
   },
 
-  // getComfortStationsByLocation: function() {
-  //   return $.ajax({
-  //     url: "/comfort_stations/",
-  //     type: "GET"
-  //   });
-  // },
+  getComfortStationsByLocation: function(address) {
+    return $.ajax({
+      url: "/comfort_stations/",
+      type: "GET",
+      data: "test"
+    });
+  },
 
   getComfortStationsByZip: function(zipCode) {
     return $.ajax({
@@ -52,9 +53,9 @@ $("#mylocation").click(function(event) {
   var lon = address.long;
   console.log(lat, lon);
   window.location.href = "/comfort_stations/geo/" + lat + "/" + lon;
-  API.getComfortStationsByZip(zipCode).then(function(res) {
-    console.log(res);
-  });
+  // API.getComfortStationsByZip(zipCode).then(function(res) {
+  //   console.log(res);
+  // });
 });
 
 // click handler for getting data based on zipcode entered by use
@@ -63,9 +64,11 @@ $("#search").click(function(event) {
   var zipCode = $("#zipInput").val();
   console.log(zipCode);
   window.location.href = "/comfort_stations/" + zipCode;
-  API.getComfortStationsByZip(zipCode).then(function(res) {
-    console.log(res);
-  });
+  // var address = zipCode;
+  // API.getComfortStationsByLocation(address);
+  // API.getComfortStationsByZip(zipCode).then(function(res) {
+  //   console.log(res);
+  // });
 });
 
 // refreshExamples gets new examples from the db and repopulates the list
