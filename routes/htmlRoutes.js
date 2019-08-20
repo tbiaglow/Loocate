@@ -124,7 +124,7 @@ module.exports = function(app) {
         function(callback) {
           var returnedAddress = reverseGeo.lookup(req.params.lat, req.params.lon, 'us')
           // var address = reverseGeocode(req.params.lat, req.params.lon);
-          console.log(returnedAddress.zipcode);
+          // console.log(returnedAddress.zipcode);
           callback(null, returnedAddress);
         },
         function(address, callback) {
