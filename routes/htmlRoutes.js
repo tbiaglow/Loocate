@@ -122,9 +122,10 @@ module.exports = function(app) {
     async.waterfall(
       [
         function(callback) {
-          var address = reverseGeocode(req.params.lat, req.params.lon);
-          console.log(address.zipcode);
-          callback(null, address);
+          var returnedAddress = reverseGeo.lookup(req.params.lat, req.params.lon, 'us')
+          // var address = reverseGeocode(req.params.lat, req.params.lon);
+          console.log(returnedAddress.zipcode);
+          callback(null, returnedAddress);
         },
         function(address, callback) {
           var zipcodeRad = zipcodes.radius(address.zipcode, 0.5);
@@ -212,11 +213,11 @@ module.exports = function(app) {
 };
 
 function reverseGeocode(lat, long) {
-  var fullAddress = reverseGeo.lookup(lat, long, 'us');
+  // var fullAddress = reverseGeo.lookup(lat, long, 'us');
   // address.latitude = lat;
   // address.longitude = long;
-  console.log("full address: " + JSON.stringify(fullAddress));
-  return fullAddress;
+  // console.log("full address: " + JSON.stringify(fullAddress));
+  return reverseGeo.lookup(lat, long, 'us');
   //address = 
   // { zipcode: '94129',
   // state_abbr: 'CA',
